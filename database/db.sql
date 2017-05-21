@@ -1,0 +1,355 @@
+CREATE DATABASE [SISLARAVEL]
+GO
+ALTER DATABASE [SISLARAVEL] SET COMPATIBILITY_LEVEL = 120
+GO
+IF (1 = FULLTEXTSERVICEPROPERTY('IsFullTextInstalled'))
+begin
+EXEC [SISLARAVEL].[dbo].[sp_fulltext_database] @action = 'enable'
+end
+GO
+ALTER DATABASE [SISLARAVEL] SET ANSI_NULL_DEFAULT OFF 
+GO
+ALTER DATABASE [SISLARAVEL] SET ANSI_NULLS OFF 
+GO
+ALTER DATABASE [SISLARAVEL] SET ANSI_PADDING OFF 
+GO
+ALTER DATABASE [SISLARAVEL] SET ANSI_WARNINGS OFF 
+GO
+ALTER DATABASE [SISLARAVEL] SET ARITHABORT OFF 
+GO
+ALTER DATABASE [SISLARAVEL] SET AUTO_CLOSE ON 
+GO
+ALTER DATABASE [SISLARAVEL] SET AUTO_SHRINK OFF 
+GO
+ALTER DATABASE [SISLARAVEL] SET AUTO_UPDATE_STATISTICS ON 
+GO
+ALTER DATABASE [SISLARAVEL] SET CURSOR_CLOSE_ON_COMMIT OFF 
+GO
+ALTER DATABASE [SISLARAVEL] SET CURSOR_DEFAULT  GLOBAL 
+GO
+ALTER DATABASE [SISLARAVEL] SET CONCAT_NULL_YIELDS_NULL OFF 
+GO
+ALTER DATABASE [SISLARAVEL] SET NUMERIC_ROUNDABORT OFF 
+GO
+ALTER DATABASE [SISLARAVEL] SET QUOTED_IDENTIFIER OFF 
+GO
+ALTER DATABASE [SISLARAVEL] SET RECURSIVE_TRIGGERS OFF 
+GO
+ALTER DATABASE [SISLARAVEL] SET  ENABLE_BROKER 
+GO
+ALTER DATABASE [SISLARAVEL] SET AUTO_UPDATE_STATISTICS_ASYNC OFF 
+GO
+ALTER DATABASE [SISLARAVEL] SET DATE_CORRELATION_OPTIMIZATION OFF 
+GO
+ALTER DATABASE [SISLARAVEL] SET TRUSTWORTHY OFF 
+GO
+ALTER DATABASE [SISLARAVEL] SET ALLOW_SNAPSHOT_ISOLATION OFF 
+GO
+ALTER DATABASE [SISLARAVEL] SET PARAMETERIZATION SIMPLE 
+GO
+ALTER DATABASE [SISLARAVEL] SET READ_COMMITTED_SNAPSHOT OFF 
+GO
+ALTER DATABASE [SISLARAVEL] SET HONOR_BROKER_PRIORITY OFF 
+GO
+ALTER DATABASE [SISLARAVEL] SET RECOVERY SIMPLE 
+GO
+ALTER DATABASE [SISLARAVEL] SET  MULTI_USER 
+GO
+ALTER DATABASE [SISLARAVEL] SET PAGE_VERIFY CHECKSUM  
+GO
+ALTER DATABASE [SISLARAVEL] SET DB_CHAINING OFF 
+GO
+ALTER DATABASE [SISLARAVEL] SET FILESTREAM( NON_TRANSACTED_ACCESS = OFF ) 
+GO
+ALTER DATABASE [SISLARAVEL] SET TARGET_RECOVERY_TIME = 0 SECONDS 
+GO
+ALTER DATABASE [SISLARAVEL] SET DELAYED_DURABILITY = DISABLED 
+GO
+USE [SISLARAVEL]
+GO
+/****** Object:  Table [dbo].[CATEGORIA]    Script Date: 20/05/2017 10:15:40 p.m. ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[CATEGORIA](
+	[id_cat_pro] [int] IDENTITY(1,1) NOT NULL,
+	[nom_cat_pro] [varchar](45) NOT NULL,
+	[desc_cat_pro] [varchar](45) NOT NULL,
+	[cond_cat_pro] [varchar](10) NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id_cat_pro] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+SET ANSI_PADDING OFF
+GO
+/****** Object:  Table [dbo].[DETALLE_INGRESO]    Script Date: 20/05/2017 10:15:40 p.m. ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[DETALLE_INGRESO](
+	[id_det_ing] [int] IDENTITY(1,1) NOT NULL,
+	[cant_ing] [int] NULL,
+	[pre_com_ing] [decimal](11, 2) NULL,
+	[pre_ven_ing] [decimal](11, 2) NULL,
+	[id_ing] [int] NULL,
+	[id_pro] [int] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id_det_ing] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[DETALLE_VENTA]    Script Date: 20/05/2017 10:15:40 p.m. ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[DETALLE_VENTA](
+	[id_det_vent] [int] IDENTITY(1,1) NOT NULL,
+	[cant_det_vent] [int] NOT NULL,
+	[pre_vent] [decimal](11, 2) NULL,
+	[desc_vent] [decimal](11, 2) NULL,
+	[id_vent_pro] [int] NULL,
+	[id_pro] [int] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id_det_vent] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[INGRESO]    Script Date: 20/05/2017 10:15:40 p.m. ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[INGRESO](
+	[id_ing] [int] IDENTITY(1,1) NOT NULL,
+	[tip_comp_ing] [varchar](50) NULL,
+	[ser_comp_ing] [varchar](50) NULL,
+	[numero_comp_ing] [varchar](50) NULL,
+	[fech_ing] [varchar](50) NULL,
+	[imp_ing] [decimal](11, 2) NULL,
+	[est_ing] [varchar](50) NULL,
+	[id_per] [int] NULL,
+ CONSTRAINT [PK__INGRESO__D62AAFC2509B4F72] PRIMARY KEY CLUSTERED 
+(
+	[id_ing] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+SET ANSI_PADDING OFF
+GO
+/****** Object:  Table [dbo].[migrations]    Script Date: 20/05/2017 10:15:40 p.m. ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[migrations](
+	[migration] [nvarchar](255) NOT NULL,
+	[batch] [int] NOT NULL
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[password_resets]    Script Date: 20/05/2017 10:15:40 p.m. ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[password_resets](
+	[email] [nvarchar](255) NOT NULL,
+	[token] [nvarchar](255) NOT NULL,
+	[created_at] [datetime] NULL
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[PERSONA]    Script Date: 20/05/2017 10:15:40 p.m. ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[PERSONA](
+	[id_per] [int] IDENTITY(1,1) NOT NULL,
+	[tip_per] [varchar](50) NULL,
+	[nom_per] [varchar](50) NULL,
+	[tip_doc_per] [varchar](50) NULL,
+	[num_doc_per] [varchar](50) NULL,
+	[dir_per] [varchar](50) NULL,
+	[tel_per] [varchar](50) NULL,
+	[email_per] [varchar](50) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id_per] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+SET ANSI_PADDING OFF
+GO
+/****** Object:  Table [dbo].[PRODUCTO]    Script Date: 20/05/2017 10:15:40 p.m. ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[PRODUCTO](
+	[id_pro] [int] IDENTITY(1,1) NOT NULL,
+	[cod_pro] [varchar](50) NULL,
+	[nom_pro] [varchar](50) NULL,
+	[stock_pro] [int] NULL,
+	[desc_pro] [varchar](50) NULL,
+	[img_pro] [varchar](100) NULL,
+	[est_pro] [varchar](20) NULL,
+	[id_cat_pro] [int] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id_pro] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+SET ANSI_PADDING OFF
+GO
+/****** Object:  Table [dbo].[users]    Script Date: 20/05/2017 10:15:40 p.m. ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[users](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[name] [nvarchar](255) NOT NULL,
+	[email] [nvarchar](255) NOT NULL,
+	[password] [nvarchar](255) NOT NULL,
+	[remember_token] [nvarchar](100) NULL,
+	[created_at] [datetime] NULL,
+	[updated_at] [datetime] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[VENTA]    Script Date: 20/05/2017 10:15:40 p.m. ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[VENTA](
+	[id_vent_pro] [int] IDENTITY(1,1) NOT NULL,
+	[tip_comp_vent] [varchar](50) NULL,
+	[ser_comp_vent] [varchar](50) NULL,
+	[num_comp_vent] [varchar](50) NULL,
+	[fech_vent] [varchar](50) NULL,
+	[imp_vent] [decimal](11, 2) NULL,
+	[total_vent] [decimal](11, 2) NULL,
+	[est_vent] [varchar](50) NULL,
+	[id_per] [int] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id_vent_pro] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+SET ANSI_PADDING OFF
+GO
+SET ANSI_PADDING ON
+
+GO
+/****** Object:  Index [password_resets_email_index]    Script Date: 20/05/2017 10:15:40 p.m. ******/
+CREATE NONCLUSTERED INDEX [password_resets_email_index] ON [dbo].[password_resets]
+(
+	[email] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+GO
+SET ANSI_PADDING ON
+
+GO
+/****** Object:  Index [password_resets_token_index]    Script Date: 20/05/2017 10:15:40 p.m. ******/
+CREATE NONCLUSTERED INDEX [password_resets_token_index] ON [dbo].[password_resets]
+(
+	[token] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+GO
+SET ANSI_PADDING ON
+
+GO
+/****** Object:  Index [users_email_unique]    Script Date: 20/05/2017 10:15:40 p.m. ******/
+CREATE UNIQUE NONCLUSTERED INDEX [users_email_unique] ON [dbo].[users]
+(
+	[email] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+GO
+ALTER TABLE [dbo].[DETALLE_INGRESO]  WITH CHECK ADD  CONSTRAINT [fk_ing] FOREIGN KEY([id_ing])
+REFERENCES [dbo].[INGRESO] ([id_ing])
+GO
+ALTER TABLE [dbo].[DETALLE_INGRESO] CHECK CONSTRAINT [fk_ing]
+GO
+ALTER TABLE [dbo].[DETALLE_INGRESO]  WITH CHECK ADD  CONSTRAINT [fk_pro] FOREIGN KEY([id_pro])
+REFERENCES [dbo].[PRODUCTO] ([id_pro])
+GO
+ALTER TABLE [dbo].[DETALLE_INGRESO] CHECK CONSTRAINT [fk_pro]
+GO
+ALTER TABLE [dbo].[DETALLE_VENTA]  WITH CHECK ADD  CONSTRAINT [fk_pro_vent] FOREIGN KEY([id_pro])
+REFERENCES [dbo].[PRODUCTO] ([id_pro])
+GO
+ALTER TABLE [dbo].[DETALLE_VENTA] CHECK CONSTRAINT [fk_pro_vent]
+GO
+ALTER TABLE [dbo].[DETALLE_VENTA]  WITH CHECK ADD  CONSTRAINT [fk_vent_pro] FOREIGN KEY([id_vent_pro])
+REFERENCES [dbo].[VENTA] ([id_vent_pro])
+GO
+ALTER TABLE [dbo].[DETALLE_VENTA] CHECK CONSTRAINT [fk_vent_pro]
+GO
+ALTER TABLE [dbo].[INGRESO]  WITH CHECK ADD  CONSTRAINT [fk_per] FOREIGN KEY([id_per])
+REFERENCES [dbo].[PERSONA] ([id_per])
+GO
+ALTER TABLE [dbo].[INGRESO] CHECK CONSTRAINT [fk_per]
+GO
+ALTER TABLE [dbo].[PRODUCTO]  WITH CHECK ADD  CONSTRAINT [fk_cat_pro] FOREIGN KEY([id_cat_pro])
+REFERENCES [dbo].[CATEGORIA] ([id_cat_pro])
+GO
+ALTER TABLE [dbo].[PRODUCTO] CHECK CONSTRAINT [fk_cat_pro]
+GO
+ALTER TABLE [dbo].[VENTA]  WITH CHECK ADD  CONSTRAINT [fk_per_vent] FOREIGN KEY([id_per])
+REFERENCES [dbo].[PERSONA] ([id_per])
+GO
+ALTER TABLE [dbo].[VENTA] CHECK CONSTRAINT [fk_per_vent]
+GO
+/****** Object:  StoredProcedure [dbo].[USP_LISTINGRESOS]    Script Date: 20/05/2017 10:15:40 p.m. ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[USP_LISTINGRESOS] @searchtext varchar(50)  = null
+AS
+SELECT  i.id_ing,i.fech_ing,p.nom_per,concat(i.tip_comp_ing,' ',
+		i.ser_comp_ing,' ' ,i.numero_comp_ing) datos,i.imp_ing,sum(d.cant_ing*d.pre_com_ing) monto,i.est_ing
+FROM INGRESO i 
+INNER JOIN PERSONA p on i.id_per=p.id_per 
+INNER JOIN DETALLE_INGRESO d on d.id_ing=i.id_ing
+GROUP BY i.id_ing,i.fech_ing,p.nom_per,i.tip_comp_ing,i.ser_comp_ing,
+		  i.numero_comp_ing,i.imp_ing,i.est_ing having @searchtext is null or p.nom_per like '%'+@searchtext+'%' 
+ORDER BY i.id_ing DESC;
+
+GO
+USE [master]
+GO
+ALTER DATABASE [SISLARAVEL] SET  READ_WRITE 
+GO
